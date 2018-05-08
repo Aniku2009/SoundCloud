@@ -1,51 +1,53 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="all" xmlns="http://www.w3.org/1999/html">
-  <div class="column">
-    <form action="/action_page.php">
-      <input type="search"  [(ngModel)]= "searchInput" name="musicsearch" >
-      <input type="submit" (click)="ngOnInit()" name="submit" value="GO">
-
-    </form>
-      <div class="searchresult">
-      </div>
-
-    <table class="tabse-search-list">
-      <tbody>
-      <tr *ngFor="let item of searchResultfromComponent.searchResultName; let i=index">
-          <table align="left" border="1px" stile="width:400%">
-            <tr>
-              <td (click)="setImageUrl(i)">
-               {{item}}
-              </td>
-            </tr>
-          </table>
-      </tr>
-     </tbody>
-    </table>
-<div class="buttons">
-    <button class="nextbutton"><i class="fa fa-forward" style="font-size:14px;"></i></button>
-    <button><i class="fa fa-list-ol" style="font-size:14px;"></i></button>
-    <button><i class="fa fa-address-book-o" style="font-size:14px;"></i></button>
-</div>
-  </div>
-  <div class="column">
-    <button type="submit" name="TrackImage"><img src={{searchImage}} (click)="playTrack(2)"></button>
-  </div>
     <div class="column">
-      <div class="list-text">Recent Searches:</div>
+        <form action="/action_page.php">
+          <input type="search"  [(ngModel)]= "searchInput" name="musicsearch" >
+          <input type="submit" (click)="ngOnInit()" name="submit" value="GO">
+        </form>
+        <div class="searchresult"></div>
+
       <table class="tabse-search-list">
         <tbody>
-        <tr *ngFor="let item of searchhistory">
-          <table align="left" border="1px" stile="width:400%">
-            <tr>
-               <td>
+        <tr *ngFor="let item of searchResultfromComponent.searchResultName; let i=index">
+            <table align="left" border="1px" stile="width:400%">
+              <tr>
+                <td (click)="setImageUrl(i)">
                  {{item}}
-              </td>
-            </tr>
-          </table>
+                </td>
+              </tr>
+            </table>
         </tr>
-        </tbody>
+       </tbody>
       </table>
+        <div class="buttons">
+            <button class="nextbutton" (click)="nextList()"><i class="fa fa-forward" style="font-size:14px; "></i></button>
+            <button><i class="fa fa-list-ol" style="font-size:14px;"></i></button>
+            <button><i class="fa fa-address-book-o" style="font-size:14px;"></i></button>
+        </div>
+    </div>
+
+    <div class="column">
+      <button type="submit" name="TrackImage"><img src={{searchImage}} (click)="playTrack(indexForPlayTrack)"></button>
+        <div>
+          <iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F173288650&show_artwork=true&auto_play=false"></iframe>
+        </div>
+    </div>
+
+    <div class="column">
+      <div class="list-text">Recent Searches:</div>
+        <table class="tabse-search-list">
+          <tbody>
+          <tr *ngFor="let item of searchhistory">
+            <table align="left" border="1px" stile="width:400%">
+              <tr>
+                 <td>
+                   {{item}}
+                </td>
+              </tr>
+            </table>
+          </tr>
+          </tbody>
+        </table>
     </div>
 </div>
 
